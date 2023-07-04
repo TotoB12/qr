@@ -8,7 +8,7 @@ import FileSaver from "file-saver";
 import promptmaker from "promptmaker";
 
 const ogImage =
-  "https://github.com/replicate/quirky/assets/14149230/953943c8-3e0c-46ae-8a2d-d6702ce24692";
+  "https://raw.githubusercontent.com/TotoB12/totob12.github.io/main/things/favicon.ico";
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -16,7 +16,7 @@ export default function Home() {
   const [prediction, setPrediction] = useState(null);
   const [error, setError] = useState(null);
   const [qr, setQR] = useState(null);
-  const [url, setUrl] = useState("replicate.com");
+  const [url, setUrl] = useState("totob12.github.io");
   const [prompt, setPrompt] = useState(promptmaker());
   const [loading, setLoading] = useState(false);
 
@@ -114,7 +114,7 @@ export default function Home() {
   return (
     <div className="container max-w-2xl mx-auto p-5">
       <Head>
-        <title>Quirky</title> <meta property="og:image" content={ogImage} />
+        <title>TotoB12 QR</title> <meta property="og:image" content={ogImage} />
         <meta
           property="og:description"
           content="Make really cool QR codes with AI."
@@ -123,41 +123,19 @@ export default function Home() {
         <meta name="twitter:card" content="summary_large_image" />
         <link
           rel="icon"
-          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔳</text></svg>"
+          href="https://raw.githubusercontent.com/TotoB12/totob12.github.io/main/things/favicon.ico"
         />
       </Head>
 
       <div className="text-center">
-        <h1 className="pt-6 text-center font-bold text-2xl">🔳 Quirky</h1>
+        <h1 className="pt-6 text-center font-bold text-2xl">🔳 TotoB12 QR </h1>
         <h5 className="pt-3 text-xs text-gray-500">
           The{" "}
-          <a className="underline" href="https://github.com/replicate/quirky">
-            open source
+          <a className="underline" href="https://totob12.github.io">
+            TotoB12
           </a>{" "}
           tool for making really cool QR codes with AI.
         </h5>
-      </div>
-
-      <div className="text-center mt-4">
-        <a href="https://replicate.com/docs?utm_source=project&utm_campaign=quirky">
-          <div className="inline-flex items-center bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-lg mx-auto text-white text-xs sm:text-sm">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-5 h-5 mr-3"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"
-              />
-            </svg>
-            Want to make your own AI powered apps? Check out Replicate &rarr;
-          </div>
-        </a>
       </div>
 
       <form className="w-full mt-6" onSubmit={handleSubmit}>
