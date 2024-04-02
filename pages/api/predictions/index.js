@@ -15,13 +15,13 @@ export default async function handler(req, res) {
 
   const prediction = await replicate.predictions.create({
     // See https://replicate.com/anotherjesse/multi-control/versions
-    version: "e785fdfe4b636f62e95835cad6ddd53505687ef4c10571d10fb6b2d0185d46aa",
+    version: "76d8414a702e66c84fe2e6e9c8cbdc12e53f950f255aae9ffa5caa7873b12de0",
 
     // This is the text prompt that will be submitted by a form on the frontend
     input: {
       prompt: req.body.prompt,
       qr_image: req.body.qr_image,
-      num_samples: 4,
+      num_outputs: 4,
       low_threshold: 100,
       scheduler: "K_EULER",
       high_threshold: 200,

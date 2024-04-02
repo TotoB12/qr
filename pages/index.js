@@ -25,6 +25,7 @@ export default function Home() {
     setLoading(true);
 
     const uploadedUrl = await createQR(e.target.url.value);
+    console.log(uploadedUrl, "uploadedUrl");
 
     console.log(`uploadedUrl is `, uploadedUrl);
     const response = await fetch("/api/predictions", {
@@ -34,6 +35,7 @@ export default function Home() {
       },
       body: JSON.stringify({
         prompt: e.target.prompt.value,
+        url: e.target.url.value,
         qr_image: uploadedUrl,
       }),
     });
@@ -64,30 +66,6 @@ export default function Home() {
       }
     }
   };
-
-  function dataURItoBlob(dataURI) {
-    // convert base64 to raw binary data held in a string
-    // doesn't handle URLEncoded DataURIs - see SO answer #6850276 for code that does this
-    var byteString = atob(dataURI.split(",")[1]);
-
-    // separate out the mime component
-    var mimeString = dataURI.split(",")[0].split(":")[1].split(";")[0];
-
-    // write the bytes of the string to an ArrayBuffer
-    var ab = new ArrayBuffer(byteString.length);
-
-    // create a view into the buffer
-    var ia = new Uint8Array(ab);
-
-    // set the bytes of the buffer to the correct values
-    for (var i = 0; i < byteString.length; i++) {
-      ia[i] = byteString.charCodeAt(i);
-    }
-
-    // write the ArrayBuffer to a blob, and you're done
-    var blob = new Blob([ab], { type: mimeString });
-    return blob;
-  }
 
   const createQR = async (url) => {
     return new Promise((resolve, reject) => {
@@ -251,7 +229,7 @@ export default function Home() {
         </div>
       </form>
 
-      {error && <div>{error}</div>}
+      {error && <div class="text-red-500 mt-4 font-bold">ERROR: {error}</div>}
 
       <div className="mt-12">
         <label
@@ -278,7 +256,6 @@ export default function Home() {
                         target="_blank"
                         download="download"
                         rel="noopener noreferrer"
-                        //   onClick={() => download(output, prediction.id)}
                       >
                         <img src={output} alt="" />
                       </a>
